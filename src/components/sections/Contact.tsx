@@ -1,27 +1,53 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Mail, MessageSquare, Send, CheckCircle } from 'lucide-react'
+import { Mail, MessageSquare, Send, CheckCircle, Loader2 } from 'lucide-react'
 import { fadeUp, stagger } from '../../lib/motion'
 
 const WA_NUMBER = '5511980937334'
 const EMAIL = 'koder.sistemas@gmail.com'
+const WEB3FORMS_KEY = 'b099cc30-c131-40a4-841e-c5c53d88e9bc'
 
 export function Contact() {
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const [form, setForm] = useState({ nome: '', email: '', telefone: '', mensagem: '' })
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    const subject = encodeURIComponent(`Contato via site — ${form.nome}`)
-    const body = encodeURIComponent(
-      `Nome: ${form.nome}\nEmail: ${form.email}\nTelefone: ${form.telefone}\n\nMensagem:\n${form.mensagem}`
-    )
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
-    setSent(true)
+    setLoading(true)
+    setError('')
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Contato via site — ${form.nome}`,
+          name: form.nome,
+          email: form.email,
+          phone: form.telefone,
+          message: form.mensagem,
+          from_name: 'Koder Site',
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSent(true)
+        setForm({ nome: '', email: '', telefone: '', mensagem: '' })
+      } else {
+        setError('Erro ao enviar. Tente pelo WhatsApp.')
+      }
+    } catch {
+      setError('Sem conexão. Tente pelo WhatsApp.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre os sistemas da Koder.')}`
@@ -290,26 +316,36 @@ export function Contact() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
                   <motion.button
                     type="submit"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-white font-bold text-sm overflow-hidden"
+                    disabled={loading}
+                    whileHover={loading ? {} : { scale: 1.02 }}
+                    whileTap={loading ? {} : { scale: 0.97 }}
+                    className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-white font-bold text-sm overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
                     style={{
                       background: 'linear-gradient(135deg, #FF3C00 0%, #FF5A20 100%)',
                       boxShadow: '0 0 0 1px rgba(255,90,32,0.35), 0 4px 20px rgba(255,60,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18)',
                     }}
                   >
-                    <motion.span
-                      aria-hidden="true"
-                      className="absolute inset-0 pointer-events-none"
-                      style={{ background: 'linear-gradient(105deg, transparent 25%, rgba(255,255,255,0.15) 50%, transparent 75%)' }}
-                      animate={{ x: ['-100%', '200%'] }}
-                      transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 2.5, ease: 'linear' }}
-                    />
+                    {!loading && (
+                      <motion.span
+                        aria-hidden="true"
+                        className="absolute inset-0 pointer-events-none"
+                        style={{ background: 'linear-gradient(105deg, transparent 25%, rgba(255,255,255,0.15) 50%, transparent 75%)' }}
+                        animate={{ x: ['-100%', '200%'] }}
+                        transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 2.5, ease: 'linear' }}
+                      />
+                    )}
                     <span className="relative z-10 flex items-center gap-2">
-                      Enviar mensagem
-                      <Send size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" />
+                      {loading ? (
+                        <><Loader2 size={14} className="animate-spin" /> Enviando...</>
+                      ) : (
+                        <>Enviar mensagem <Send size={14} className="group-hover:translate-x-0.5 transition-transform duration-200" /></>
+                      )}
                     </span>
                   </motion.button>
+
+                  {error && (
+                    <p className="text-xs" style={{ color: '#FF5A20' }}>{error}</p>
+                  )}
 
                   <p className="text-xs" style={{ color: '#555555' }}>
                     Ou fale direto no{' '}
