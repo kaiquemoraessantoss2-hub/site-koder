@@ -409,41 +409,6 @@ a:focus-visible, button:focus-visible { outline: 3px solid #ff5a20; outline-offs
 .p-channel b { margin-left: auto; font-weight: 500; color: #192b40; }
 .p-dashboard-main > footer { display: flex; justify-content: space-between; font-size: 7px; color: #8b95a3; margin-top: 18px; }
 .p-dashboard-main footer i, .p-crm footer i { display: inline-block; width: 5px; height: 5px; background: #4c9c76; border-radius: 50%; margin-right: 5px; }
-.p-website { background: #f4f1e9; color: #36382f; }
-.p-website > nav { height: 85px; margin: 0 35px; border-bottom: 1px solid #dcdacf; display: flex; justify-content: space-between; align-items: center; }
-.p-website nav > b { font-size: 34px; letter-spacing: -2px; font-weight: 500; }
-.p-website nav b > span { font-size: 13px; vertical-align: top; margin-left: 2px; }
-.p-website nav > span { letter-spacing: 2px; font-size: 7px; color: #858679; }
-.p-website nav > button { display: flex; align-items: center; gap: 12px; padding: 10px 15px; border: 1px solid #cccdbf; border-radius: 25px; font-size: 10px; }
-.p-site-layout { display: grid; grid-template-columns: 1fr 1.1fr; padding: 30px 35px; gap: 40px; }
-.p-site-copy { padding: 35px 0 0; }
-.p-site-eyebrow { font-size: 8px; letter-spacing: 2px; color: #848679; }
-.p-site-copy h3 { font-size: clamp(35px, 4.2vw, 64px); line-height: 1.05; letter-spacing: -3px; font-weight: 400; margin: 25px 0; max-width: 360px; animation: k-enter .4s both; }
-.p-site-copy > p { font-size: 12px; line-height: 1.8; color: #7c7f72; max-width: 240px; }
-.p-site-cta { display: flex; align-items: center; gap: 25px; background: #393e32; color: #f6f4ef; border-radius: 3px; padding: 13px 17px; font-size: 10px; margin-top: 25px; }
-.p-site-categories { display: flex; gap: 20px; margin-top: 50px; border-top: 1px solid #dcdacf; padding-top: 15px; }
-.p-site-categories button { font-size: 10px; color: #878a7d; text-align: left; }
-.p-site-categories button small { display: block; font-size: 7px; margin-bottom: 7px; }
-.p-site-categories button[aria-pressed=true] { color: #383f30; }
-.p-architecture { min-height: 420px; background: linear-gradient(145deg, #d8d6cb, #e9e5d9); position: relative; overflow: hidden; }
-.p-arch-sun { position: absolute; width: 160px; height: 160px; border-radius: 50%; background: #f3efdf; top: 30px; right: 30px; }
-.p-arch-building { position: absolute; inset: 70px 30px 70px; perspective: 900px; }
-.p-arch-wall { position: absolute; bottom: 0; left: 12%; width: 68%; height: 83%; background: linear-gradient(100deg, #d2c6b2, var(--project-color)); box-shadow: 20px 30px 40px #5d554940; transform: skewY(-8deg); transition: background .4s; }
-.p-arch-wall::before { content: ''; position: absolute; right: -24%; top: 9%; width: 24%; height: 100%; background: #7f776b; transform: skewY(35deg); }
-.p-arch-window { position: absolute; bottom: 0; left: 22%; width: 25%; height: 65%; background: repeating-linear-gradient(90deg, transparent 0 22px, #9d9579 22px 25px), linear-gradient(125deg, #2d3934, #8b9275); border: 8px solid #9d9579; transform: skewY(-8deg); }
-.p-arch-block { position: absolute; left: 4%; top: 0; width: 85%; height: 30%; background: linear-gradient(110deg, #dfd5c4, #bdb099); transform: skewY(-8deg); box-shadow: 0 10px 12px #65584130; }
-.p-arch-block::before { content: ''; position: absolute; width: 100%; height: 26%; top: -25%; background: #ede7d9; transform: skewX(45deg); transform-origin: bottom; }
-.p-arch-stairs { position: absolute; bottom: -15px; left: 9%; width: 64%; height: 24px; background: repeating-linear-gradient(#c6bcaa 0 6px, #b1a591 6px 8px); transform: skewY(-8deg); box-shadow: 10px 10px 25px #5d554928; }
-.p-arch-caption { position: absolute; bottom: 17px; left: 20px; right: 20px; display: flex; justify-content: space-between; align-items: center; color: #394035; font-size: 12px; }
-.p-arch-caption small { display: block; font-size: 8px; color: #74786a; margin-top: 3px; }
-.p-arch-caption button { background: #f4f1e9; width: 35px; height: 35px; border-radius: 50%; display: grid; place-items: center; }
-.p-project-details { position: absolute; inset: 15px; padding: 35px; display: flex; flex-direction: column; justify-content: center; background: #f4f1e9f2; backdrop-filter: blur(12px); animation: k-enter .3s both; }
-.p-project-details small { font-size: 8px; color: #7c7f72; letter-spacing: 2px; }
-.p-project-details h4 { font-size: 35px; line-height: 1.1; letter-spacing: -1px; margin: 20px 0; font-weight: 400; }
-.p-project-details p { font-size: 12px; line-height: 1.8; color: #7c7f72; }
-.p-project-details > span { font-size: 10px; margin: 18px 0; }
-.p-project-details button { display: inline-flex; align-items: center; gap: 15px; font-size: 10px; align-self: flex-start; padding-bottom: 5px; border-bottom: 1px solid #393e32; }
-.p-website > footer { display: flex; justify-content: space-between; margin: 0 35px; padding: 20px 0; border-top: 1px solid #dcdacf; font-size: 7px; color: #828478; letter-spacing: 1px; }
 .p-crm { background: #f6f7fa; min-height: 580px; }
 .p-crm > header { padding: 20px 30px; background: white; border-bottom: 1px solid #e7ebf0; display: flex; align-items: center; gap: 30px; }
 .p-crm header > b { display: flex; align-items: center; gap: 8px; font-size: 27px; letter-spacing: -1.5px; }
@@ -617,3 +582,16 @@ a:focus-visible, button:focus-visible { outline: 3px solid #ff5a20; outline-offs
   .k-mobile-stage:not(.is-paused) .k-phone-scenes .k-phone-scene.active .k-demo-chart svg { animation-duration: 5s !important; animation-iteration-count: infinite !important; }
   .k-mobile-stage:not(.is-paused) .k-phone-scenes .k-phone-scene.active .k-kanban article { animation-duration: 3.4s !important; animation-iteration-count: infinite !important; }
 }
+
+/* Real Finova site, embedded as an interactive portfolio project. */
+.p-finova { background: #f7f9f3; color: #152216; }
+.p-finova-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 34px; }
+.p-finova-header > div > span { font-size: 9px; letter-spacing: 1.7px; font-weight: 700; color: #5a745e; }
+.p-finova-header h3 { margin: 7px 0 4px; font-size: 30px; line-height: 1; letter-spacing: -1.5px; font-weight: 750; text-transform: uppercase; }
+.p-finova-header h3 span { font-size: 12px; vertical-align: top; color: #218545; }
+.p-finova-header p { font-size: 11px; color: #66736a; }
+.p-finova-header > a { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; padding: 12px 15px; background: #173b20; color: #fff; border-radius: 8px; font-size: 11px; font-weight: 600; transition: background .2s, transform .2s; }
+.p-finova-header > a:hover { background: #245c30; transform: translateY(-2px); }
+.p-finova iframe { display: block; width: 100%; height: 650px; border: 0; background: #fafaf7; }
+.p-finova-footer { display: flex; justify-content: space-between; gap: 15px; padding: 15px 34px; font-size: 10px; color: #627567; }
+@media (max-width: 767px) { .p-finova-header { align-items: flex-start; flex-direction: column; padding: 22px 18px; gap: 18px; } .p-finova-header h3 { font-size: 26px; } .p-finova-header > a { font-size: 10px; } .p-finova iframe { height: 540px; } .p-finova-footer { flex-direction: column; padding: 13px 18px; font-size: 9px; } }
