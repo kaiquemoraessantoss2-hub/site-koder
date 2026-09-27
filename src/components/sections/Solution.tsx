@@ -45,7 +45,7 @@ export function Solution() {
                   fontWeight: 600,
                   letterSpacing: '-2.5px',
                   lineHeight: 1.1,
-                  color: '#FFFFFF',
+                  color: 'var(--text-heading)',
                 }}
               >
                 A Koder cria o sistema ideal para o seu negócio
@@ -85,7 +85,7 @@ export function Solution() {
               <motion.li
                 key={feature}
                 variants={fadeUp}
-                className="group flex items-center gap-4 py-4 border-b border-white/[0.06]"
+                className="group flex items-center gap-4 py-4 border-b border-black/[0.08] dark:border-white/[0.07]"
               >
                 <span className="text-muted/30 text-xs font-medium tracking-widest flex-shrink-0 w-6">
                   {String(i + 1).padStart(2, '0')}
@@ -112,8 +112,8 @@ export function Solution() {
             className="lg:col-span-2"
           >
             <div
-              className="rounded-2xl p-6 border border-white/[0.07] space-y-6"
-              style={{ background: 'linear-gradient(145deg, #161626 0%, #111120 100%)' }}
+              className="rounded-2xl p-6 border border-black/[0.09] space-y-6"
+              style={{ background: 'var(--bg-card)' }}
             >
               <p className="text-xs text-muted tracking-widest uppercase">
                 Resultados — 1º mês
@@ -131,7 +131,7 @@ export function Solution() {
                       {stat.value}
                     </span>
                   </div>
-                  <div className="h-1 rounded-full bg-white/[0.05]">
+                  <div className="h-1 rounded-full" style={{ background: 'var(--bar-track)' }}>
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${stat.bar}%` }}
@@ -145,7 +145,7 @@ export function Solution() {
               ))}
 
               {/* Divider quote */}
-              <div className="pt-2 border-t border-white/[0.06]">
+              <div className="pt-2 border-t border-black/[0.08] dark:border-white/[0.07]">
                 <p className="text-muted/60 text-xs leading-relaxed italic">
                   "Reduzimos erros operacionais em 90% no primeiro mês."
                 </p>

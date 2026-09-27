@@ -1,0 +1,14 @@
+import { ArrowUpRight, Activity, Layers, LayoutGrid, Command } from 'lucide-react'
+
+export type PreviewKind = 'site' | 'dashboard' | 'system'
+
+export function InterfacePreview({ kind }: { kind: PreviewKind }) {
+  return (
+    <div className={`k-preview k-preview-${kind}`}>
+      <div className="k-browser"><span /><span /><span /><small>{kind === 'site' ? 'seunegocio.com.br' : kind === 'dashboard' ? 'insights / visão geral' : 'workspace / projetos'}</small><ArrowUpRight size={10} /></div>
+      {kind === 'site' ? <div className="k-demo-site"><div className="k-demo-nav"><b>forma<span>®</span></b><span>Estúdio &nbsp; Projetos &nbsp; Contato</span></div><div className="k-demo-site-body"><div><small>DESIGN QUE CONECTA</small><h3>O extraordinário<br />começa aqui.</h3><p>Novas ideias. Novas possibilidades.</p><span className="k-demo-cta">Explore nosso universo ↗</span></div><div className="k-sculpture"><div /><div /><div /></div></div><div className="k-demo-site-foot"><span>ESTRATÉGIA</span><span>CRIATIVIDADE</span><span>EXPERIÊNCIA</span></div></div>
+        : kind === 'dashboard' ? <div className="k-demo-dashboard"><div className="k-demo-title"><span><Activity size={15} /> Visão do negócio</span><small>Este mês ↗</small></div><div className="k-demo-metrics"><div><small>Receita total</small><strong>R$ 48.250</strong><em>↗ 18,6% este mês</em></div><div><small>Novos clientes</small><strong>128</strong><em>↗ 12,4% este mês</em></div></div><div className="k-demo-chart"><div className="k-chart-grid" /><svg viewBox="0 0 320 100" preserveAspectRatio="none"><path d="M0 86 C25 86 20 54 48 64 S75 78 98 48 S125 64 150 41 S182 62 205 30 S241 46 268 17 S293 28 320 5" fill="none" stroke="#ff5a20" strokeWidth="3" /><path d="M0 86 C25 86 20 54 48 64 S75 78 98 48 S125 64 150 41 S182 62 205 30 S241 46 268 17 S293 28 320 5 L320 100 L0 100Z" fill="rgba(255,90,32,.09)" /></svg></div><div className="k-chart-months"><span>JAN</span><span>FEV</span><span>MAR</span><span>ABR</span><span>MAI</span><span>JUN</span></div></div>
+        : <div className="k-demo-system"><aside><Command size={19} /><LayoutGrid size={14} /><Layers size={14} /><Activity size={14} /></aside><div className="k-demo-workspace"><div className="k-demo-title"><b>Seus projetos</b><span className="k-demo-new">+ Novo</span></div><small>Menos tarefas. Mais resultados.</small><div className="k-kanban">{['A fazer', 'Em andamento', 'Concluído'].map((label, i) => <div key={label}><small><i />{label}</small><article><span className="k-task-tag">{['WEBSITE', 'GESTÃO', 'DADOS'][i]}</span><b>{['Nova experiência digital', 'Fluxo de vendas', 'Relatório mensal'][i]}</b><div className="k-task-lines" /><span className="k-task-avatar">K</span></article><article className="k-task-mini"><b>{['Planejamento', 'Integração', 'Entrega aprovada'][i]}</b><div className="k-task-lines" /></article></div>)}</div></div></div>}
+    </div>
+  )
+}

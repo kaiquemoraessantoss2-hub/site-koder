@@ -8,7 +8,7 @@ const steps = [
     icon: Search,
     number: '01',
     title: 'Diagnóstico gratuito',
-    description: 'Entendemos seu processo e identificamos gargalos. Sem compromisso, sem custo.',
+    description: 'Entendemos seu negócio, sua ideia e seus objetivos para definir a solução ideal. Sem compromisso, sem custo.',
   },
   {
     icon: Code2,
@@ -43,7 +43,7 @@ export function HowItWorks() {
           letterSpacing: '-0.06em',
           lineHeight: 1,
           color: 'transparent',
-          WebkitTextStroke: '1px rgba(255,255,255,0.025)',
+          WebkitTextStroke: '1px var(--ghost-stroke)',
         }}
         aria-hidden="true"
       >
@@ -73,10 +73,10 @@ export function HowItWorks() {
                 fontWeight: 600,
                 letterSpacing: '-2.5px',
                 lineHeight: 1.1,
-                color: '#FFFFFF',
+                color: 'var(--text-heading)',
               }}
             >
-              Do diagnóstico ao sistema em produção
+              Da sua ideia ao projeto no ar
             </motion.h2>
           </div>
         </div>
@@ -84,7 +84,7 @@ export function HowItWorks() {
         {/* Steps */}
         <div ref={containerRef} className="relative">
           {/* Animated connector (desktop) */}
-          <div className="absolute top-8 left-8 right-8 hidden lg:block h-px overflow-hidden">
+          <div className="k-process-connector absolute hidden lg:block h-px overflow-hidden" aria-hidden="true">
             <svg
               width="100%"
               height="2"
@@ -92,7 +92,7 @@ export function HowItWorks() {
               preserveAspectRatio="none"
               className="absolute inset-0"
             >
-              <line x1="0" y1="1" x2="100" y2="1" stroke="rgba(255,255,255,0.05)" strokeWidth="2" />
+              <line x1="0" y1="1" x2="100" y2="1" stroke="var(--connector-line)" strokeWidth="2" />
               <motion.line
                 x1="0"
                 y1="1"
@@ -118,15 +118,15 @@ export function HowItWorks() {
               return (
                 <motion.div key={step.number} variants={fadeUp} className="relative">
                   {/* Icon + number */}
-                  <div className="flex items-center gap-4 mb-6">
+                  <div className="relative z-10 flex items-center gap-4 mb-6">
                     <div
-                      className="w-14 h-14 rounded-2xl border border-white/[0.07] flex items-center justify-center flex-shrink-0"
-                      style={{ background: 'linear-gradient(145deg, #161626 0%, #111120 100%)' }}
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                      style={{ border: '1px solid var(--border-main)', background: 'var(--bg-step)' }}
                     >
                       <Icon size={22} className="text-primary" />
                     </div>
                     <span
-                      className="text-muted/25 font-semibold"
+                      className="k-step-number font-semibold"
                       style={{ fontSize: '13px', letterSpacing: '3px' }}
                     >
                       {step.number}
@@ -134,8 +134,8 @@ export function HowItWorks() {
                   </div>
 
                   <h3
-                    className="text-off-white font-semibold mb-3"
-                    style={{ fontSize: '20px', letterSpacing: '-0.5px' }}
+                    className="font-semibold mb-3"
+                    style={{ fontSize: '20px', letterSpacing: '-0.5px', color: 'var(--k-ink)' }}
                   >
                     {step.title}
                   </h3>

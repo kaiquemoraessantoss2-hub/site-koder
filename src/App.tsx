@@ -1,9 +1,11 @@
+import { useCallback, useState } from 'react'
+import { LoadingIntro, type IntroPhase } from './components/ui/LoadingIntro'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 import { Hero } from './components/sections/Hero'
-import { Problem } from './components/sections/Problem'
-import { Solution } from './components/sections/Solution'
-import { BentoFeatures } from './components/sections/BentoFeatures'
+import { Services } from './components/sections/Services'
+import { MobileExperience } from './components/sections/MobileExperience'
+import { ProjectShowcase } from './components/sections/ProjectShowcase'
 import { HowItWorks } from './components/sections/HowItWorks'
 import { Testimonials } from './components/sections/Testimonials'
 import { Contact } from './components/sections/Contact'
@@ -11,14 +13,19 @@ import { CTA } from './components/sections/CTA'
 import { WhatsAppButton } from './components/ui/WhatsAppButton'
 
 function App() {
+  const [intro, setIntro] = useState<IntroPhase>('loading')
+  const reveal = useCallback(() => setIntro('revealing'), [])
+  const complete = useCallback(() => setIntro('done'), [])
   return (
-    <div className="bg-obsidian min-h-screen">
+    <>
+    <LoadingIntro phase={intro} onReady={reveal} onComplete={complete} />
+    <div className={`k-site-content min-h-screen ${intro === 'loading' ? 'is-loading' : 'is-ready'}`} aria-hidden={intro === 'loading' ? true : undefined} style={{ background: 'var(--bg-main)' }}>
       <Navbar />
       <main>
         <Hero />
-        <Problem />
-        <Solution />
-        <BentoFeatures />
+        <Services />
+        <MobileExperience />
+        <ProjectShowcase />
         <HowItWorks />
         <Testimonials />
         <Contact />
@@ -27,6 +34,7 @@ function App() {
       <Footer />
       <WhatsAppButton />
     </div>
+    </>
   )
 }
 

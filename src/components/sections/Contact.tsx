@@ -50,7 +50,7 @@ export function Contact() {
     }
   }
 
-  const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Olá! Gostaria de saber mais sobre os sistemas da Koder.')}`
+  const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Olá! Gostaria de conversar sobre um site, sistema ou projeto de dados com a Koder.')}`
 
   return (
     <section id="contato" className="relative py-32 px-6 overflow-hidden">
@@ -88,7 +88,7 @@ export function Contact() {
                 fontWeight: 600,
                 letterSpacing: '-2.5px',
                 lineHeight: 1.1,
-                color: '#FFFFFF',
+                color: 'var(--text-heading)',
               }}
             >
               Vamos conversar sobre o seu negócio
@@ -174,7 +174,7 @@ export function Contact() {
             <motion.div
               variants={fadeUp}
               className="flex items-center gap-3 px-4 py-3 rounded-xl"
-              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
+              style={{ background: 'var(--bar-track)', border: '1px solid var(--border-subtle)' }}
             >
               <MessageSquare size={15} style={{ color: '#FF5A20', flexShrink: 0 }} />
               <p className="text-xs" style={{ color: '#555555' }}>
@@ -195,8 +195,8 @@ export function Contact() {
               <div
                 className="h-full min-h-[380px] flex flex-col items-center justify-center gap-4 rounded-2xl border"
                 style={{
-                  background: 'linear-gradient(145deg, #161626 0%, #111120 100%)',
-                  borderColor: 'rgba(255,255,255,0.07)',
+                  background: 'var(--bg-card)',
+                  borderColor: 'var(--border-main)',
                 }}
               >
                 <motion.div
@@ -223,8 +223,8 @@ export function Contact() {
                 onSubmit={handleSubmit}
                 className="rounded-2xl border p-8 space-y-5"
                 style={{
-                  background: 'linear-gradient(145deg, #161626 0%, #111120 100%)',
-                  borderColor: 'rgba(255,255,255,0.07)',
+                  background: 'var(--bg-card)',
+                  borderColor: 'var(--border-main)',
                 }}
               >
                 {/* Row: nome + email */}
@@ -239,13 +239,13 @@ export function Contact() {
                       onChange={handleChange}
                       required
                       placeholder="Seu nome"
-                      className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-white/20 outline-none transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-xl text-sm text-off-white placeholder-black/30 outline-none transition-all duration-200"
                       style={{
                         background: 'rgba(255,255,255,0.04)',
                         border: '1px solid rgba(255,255,255,0.08)',
                       }}
                       onFocus={e => (e.target.style.borderColor = 'rgba(255,60,0,0.45)')}
-                      onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                      onBlur={e => (e.target.style.borderColor = 'var(--border-main)')}
                     />
                   </div>
                   <div className="space-y-2">
@@ -259,13 +259,13 @@ export function Contact() {
                       onChange={handleChange}
                       required
                       placeholder="seu@email.com"
-                      className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-white/20 outline-none transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-xl text-sm text-off-white placeholder-black/30 outline-none transition-all duration-200"
                       style={{
                         background: 'rgba(255,255,255,0.04)',
                         border: '1px solid rgba(255,255,255,0.08)',
                       }}
                       onFocus={e => (e.target.style.borderColor = 'rgba(255,60,0,0.45)')}
-                      onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                      onBlur={e => (e.target.style.borderColor = 'var(--border-main)')}
                     />
                   </div>
                 </div>
@@ -280,13 +280,13 @@ export function Contact() {
                     value={form.telefone}
                     onChange={handleChange}
                     placeholder="(11) 99999-9999"
-                    className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-white/20 outline-none transition-all duration-200"
+                    className="w-full px-4 py-3 rounded-xl text-sm text-off-white placeholder-black/30 outline-none transition-all duration-200"
                     style={{
-                      background: 'rgba(255,255,255,0.04)',
-                      border: '1px solid rgba(255,255,255,0.08)',
+                      background: 'var(--bar-track)',
+                      border: '1px solid var(--border-main)',
                     }}
                     onFocus={e => (e.target.style.borderColor = 'rgba(255,60,0,0.45)')}
-                    onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                    onBlur={e => (e.target.style.borderColor = 'var(--border-main)')}
                   />
                 </div>
 
@@ -301,14 +301,14 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     rows={4}
-                    placeholder="Conte sobre o seu negócio e o que você precisa automatizar..."
+                    placeholder="Conte sobre sua ideia: um site, sistema, análise de dados ou dashboard..."
                     className="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-white/20 outline-none transition-all duration-200 resize-none"
                     style={{
-                      background: 'rgba(255,255,255,0.04)',
-                      border: '1px solid rgba(255,255,255,0.08)',
+                      background: 'var(--bar-track)',
+                      border: '1px solid var(--border-main)',
                     }}
                     onFocus={e => (e.target.style.borderColor = 'rgba(255,60,0,0.45)')}
-                    onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                    onBlur={e => (e.target.style.borderColor = 'var(--border-main)')}
                   />
                 </div>
 

@@ -38,7 +38,8 @@ const testimonials = [
 function TestimonialCard({ quote, author, role }: { quote: string; author: string; role: string }) {
   return (
     <div
-      className="w-80 flex-shrink-0 rounded-2xl p-6 border border-white/[0.07] bg-navy"
+      className="w-80 flex-shrink-0 rounded-2xl p-6 bg-navy"
+      style={{ border: '1px solid var(--border-main)' }}
     >
       <Quote size={20} className="text-primary mb-3 opacity-60" />
       <p className="text-off-white text-sm mb-4" style={{ lineHeight: 1.7 }}>"{quote}"</p>
@@ -57,7 +58,12 @@ function TestimonialCard({ quote, author, role }: { quote: string; author: strin
 
 export function Testimonials() {
   return (
-    <section className="py-24 overflow-hidden">
+    <section className="relative py-24 overflow-hidden" style={{ background: 'var(--bg-alt)', borderTop: '1px solid var(--border-section-top)' }}>
+      {/* Subtle red top glow */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[70vw] h-32 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at top, rgba(255,60,0,0.04) 0%, transparent 70%)' }}
+      />
       <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -74,7 +80,7 @@ export function Testimonials() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="text-off-white font-semibold"
-          style={{ fontSize: 'clamp(28px, 4vw, 44px)', letterSpacing: '-1.5px' }}
+          style={{ fontSize: 'clamp(28px, 4vw, 44px)', letterSpacing: '-1.5px', color: '#FF3C00' }}
         >
           O que nossos clientes dizem
         </motion.h2>

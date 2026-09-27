@@ -8,7 +8,7 @@ export function CTA() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 90% 70% at 50% 50%, rgba(255,60,0,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 90% 70% at 50% 50%, rgba(255,60,0,0.08) 0%, transparent 70%)',
         }}
       />
 
@@ -23,7 +23,7 @@ export function CTA() {
             fontWeight: 700,
             letterSpacing: '-0.06em',
             color: 'transparent',
-            WebkitTextStroke: '1px rgba(255,60,0,0.05)',
+            WebkitTextStroke: '1px var(--ghost-stroke)',
             whiteSpace: 'nowrap',
           }}
         >
@@ -54,10 +54,10 @@ export function CTA() {
                 fontWeight: 600,
                 letterSpacing: '-3px',
                 lineHeight: 1.05,
-                color: '#FFFFFF',
+                color: 'var(--text-heading)',
               }}
             >
-              Pronto para parar de depender de planilhas?
+              Sua próxima grande ideia começa aqui.
             </motion.h2>
           </div>
 
@@ -69,7 +69,7 @@ export function CTA() {
             className="text-muted mb-10"
             style={{ fontSize: '17px', lineHeight: 1.75, maxWidth: '480px' }}
           >
-            Agende um diagnóstico gratuito e veja o que um sistema sob medida pode fazer pelo seu negócio.
+            Vamos conversar sobre o seu site, sistema ou projeto de dados e descobrir a melhor solução para o seu negócio.
           </motion.p>
 
           <motion.div
@@ -111,7 +111,7 @@ export function CTA() {
             </motion.a>
 
             <div className="flex items-center gap-3 py-4">
-              <div className="w-px h-6 bg-white/10" />
+              <div className="w-px h-6" style={{ background: 'var(--divider)' }} />
               <p className="text-muted text-sm">Sem compromisso. Resposta em 24h.</p>
             </div>
           </motion.div>

@@ -3,7 +3,7 @@ import { Logo } from '../ui/Logo'
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.07] bg-obsidian">
+    <footer className="bg-charcoal" style={{ borderTop: '1px solid var(--border-main)' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
@@ -12,13 +12,13 @@ export function Footer() {
           </div>
 
           <nav className="flex flex-wrap gap-6">
-            {['Sobre', 'Serviços', 'Contato'].map((item) => (
+            {[{ label: 'Início', href: '#inicio' }, { label: 'Serviços', href: '#servicos' }, { label: 'Contato', href: '#contato' }].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.label}
+                href={item.href}
                 className="text-muted hover:text-off-white text-sm transition-colors duration-200"
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </nav>
@@ -41,8 +41,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/[0.07]">
-          <p className="text-muted text-sm">© 2025 Koder. Todos os direitos reservados.</p>
+        <div className="mt-8 pt-8" style={{ borderTop: '1px solid var(--border-main)' }}>
+          <p className="text-muted text-sm">© {new Date().getFullYear()} Koder. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

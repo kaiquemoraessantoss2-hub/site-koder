@@ -25,7 +25,12 @@ const problems = [
 
 export function Problem() {
   return (
-    <section id="problema" className="relative py-32 px-6 overflow-hidden">
+    <section id="problema" className="relative py-32 px-6 overflow-hidden" style={{ background: 'var(--bg-alt)', borderTop: '1px solid var(--border-section-top)' }}>
+      {/* Subtle red top glow */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[70vw] h-32 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at top, rgba(255,60,0,0.04) 0%, transparent 70%)' }}
+      />
       {/* Background number — editorial element */}
       <div
         className="absolute -right-8 top-1/2 -translate-y-1/2 select-none pointer-events-none hidden lg:block"
@@ -35,7 +40,7 @@ export function Problem() {
           letterSpacing: '-0.06em',
           lineHeight: 1,
           color: 'transparent',
-          WebkitTextStroke: '1px rgba(255,255,255,0.03)',
+          WebkitTextStroke: '1px var(--ghost-stroke)',
         }}
         aria-hidden="true"
       >
@@ -66,7 +71,7 @@ export function Problem() {
                 fontWeight: 600,
                 letterSpacing: '-2.5px',
                 lineHeight: 1.1,
-                color: '#FFFFFF',
+                color: 'var(--text-heading)',
               }}
             >
               Planilhas travam o crescimento da sua empresa
@@ -97,7 +102,7 @@ export function Problem() {
                 whileInView="visible"
                 viewport={{ once: true, margin: '-40px 0px' }}
                 transition={{ delay: i * 0.1 }}
-                className="group flex items-start gap-8 py-8 border-t border-white/[0.07] cursor-default"
+                className="group flex items-start gap-8 py-8 border-t border-black/[0.08] dark:border-white/[0.07] cursor-default"
                 whileHover={{ x: 6 }}
               >
                 {/* Number */}
@@ -137,7 +142,7 @@ export function Problem() {
             )
           })}
           {/* Bottom rule */}
-          <div className="border-t border-white/[0.07]" />
+          <div className="border-t border-black/[0.08] dark:border-white/[0.07]" />
         </div>
       </div>
     </section>

@@ -12,15 +12,16 @@ interface RingDef {
   phase: number
 }
 
-export function VortexOrb({ size = 440 }: { size?: number }) {
+export function VortexOrb({ size = 440, animate = false }: { size?: number; animate?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const reduced = false;
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     if (!ctx) return
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let reduced = preference.matches && !animate
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
     canvas.width = size * dpr
@@ -41,9 +42,12 @@ export function VortexOrb({ size = 440 }: { size?: number }) {
     ]
 
     const rotations = rings.map(r => r.phase)
-    let animId: number
+    let animId = 0
+    let lastTime = 0
 
-    const draw = () => {
+    const draw = (time = 0) => {
+      const delta = lastTime ? Math.min((time - lastTime) / 16.67, 2) : 1
+      lastTime = time
       ctx.clearRect(0, 0, size, size)
 
       // Core radial glow
@@ -165,7 +169,7 @@ export function VortexOrb({ size = 440 }: { size?: number }) {
           ctx.restore()
         }
 
-        if (!reduced) rotations[idx] += ring.speed
+        if (!reduced) rotations[idx] += ring.speed * delta
       })
 
       // Outer ambient halo
@@ -177,12 +181,20 @@ export function VortexOrb({ size = 440 }: { size?: number }) {
       ctx.arc(cx, cy, R * 1.7, 0, Math.PI * 2)
       ctx.fill()
 
-      animId = requestAnimationFrame(draw)
+      if (!reduced && !document.hidden) animId = requestAnimationFrame(draw)
     }
 
     draw()
-    return () => cancelAnimationFrame(animId)
-  }, [size, reduced])
+    const resume = () => {
+      cancelAnimationFrame(animId)
+      reduced = preference.matches && !animate
+      lastTime = 0
+      if (!document.hidden) draw()
+    }
+    preference.addEventListener('change', resume)
+    document.addEventListener('visibilitychange', resume)
+    return () => { cancelAnimationFrame(animId); preference.removeEventListener('change', resume); document.removeEventListener('visibilitychange', resume) }
+  }, [size, animate])
 
   return (
     <canvas

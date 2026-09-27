@@ -56,8 +56,8 @@ function GlowBentoCard({ children, className = '' }: { children: React.ReactNode
       onMouseLeave={() => { mouseX.set(0); mouseY.set(0) }}
       whileHover={{ scale: 1.015 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative overflow-hidden rounded-2xl border border-white/[0.07] ${className}`}
-      style={{ background: 'linear-gradient(145deg, #161626 0%, #111120 100%)' }}
+      className={`relative overflow-hidden rounded-2xl border border-black/[0.09] dark:border-white/[0.07] ${className}`}
+      style={{ background: 'var(--bg-card)' }}
     >
       <motion.div style={{ background }} className="absolute inset-0 pointer-events-none z-0" />
       <div className="relative z-10 h-full">{children}</div>
@@ -69,7 +69,12 @@ export function BentoFeatures() {
   const { count, ref } = useAnimatedCounter(70, 2)
 
   return (
-    <section className="py-32 px-6">
+    <section className="relative py-32 px-6 overflow-hidden" style={{ background: 'var(--bg-alt)', borderTop: '1px solid var(--border-section-top)' }}>
+      {/* Subtle red top glow */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[70vw] h-32 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at top, rgba(255,60,0,0.04) 0%, transparent 70%)' }}
+      />
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
@@ -95,7 +100,7 @@ export function BentoFeatures() {
                   fontWeight: 600,
                   letterSpacing: '-2px',
                   lineHeight: 1.1,
-                  color: '#FFFFFF',
+                  color: '#FF3C00',
                 }}
               >
                 Tudo que seu negócio precisa
@@ -128,7 +133,7 @@ export function BentoFeatures() {
                       fontSize: 'clamp(56px, 7vw, 88px)',
                       fontWeight: 600,
                       letterSpacing: '-4px',
-                      color: '#FFFFFF',
+                      color: '#FF3C00',
                       lineHeight: 1,
                     }}
                   >
@@ -221,7 +226,7 @@ export function BentoFeatures() {
                 ].map(({ label, val }, i) => (
                   <div key={label} className="flex items-center gap-3">
                     <span className="text-muted text-xs w-14">{label}</span>
-                    <div className="flex-1 h-1 rounded-full bg-white/[0.05]">
+                    <div className="flex-1 h-1 rounded-full" style={{ background: 'var(--bar-track)' }}>
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${val}%` }}

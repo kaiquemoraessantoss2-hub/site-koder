@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 const WA_NUMBER = '5511980937334'
-const WA_MESSAGE = 'Olá! Gostaria de saber mais sobre os sistemas da Koder.'
+const WA_MESSAGE = 'Olá! Gostaria de conversar sobre um site, sistema ou projeto de dados com a Koder.'
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`
 
 export function WhatsAppButton() {
