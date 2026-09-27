@@ -4,7 +4,7 @@ import { InterfacePreview } from '../ui/InterfacePreview'
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null)
-  const [motionEnabled, setMotionEnabled] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const [motionEnabled, setMotionEnabled] = useState(true)
   const move = (event: PointerEvent<HTMLElement>) => {
     if (event.pointerType !== 'mouse' || !motionEnabled) return
     const bounds = event.currentTarget.getBoundingClientRect()
